@@ -1,6 +1,6 @@
 {
     "name": "Link in Current Tab",
-    "description": "Force all links to be opened in current tab instead of new one",
+    "description": "Force all links to be opened in current tab instead of the new one",
     "version": "1.0.0",
     "author": "Jacques De SAGAN",
     "manifest_version": 2,
