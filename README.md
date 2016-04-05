@@ -12,8 +12,12 @@ This extension execute the below javascript code in all pages
 
 ```javascript
 window.addEventListener('click', (e) => {
-    if( e.target.tagName == 'A' && (!e.target.target || e.target.target == "_blank") ) {
-        e.target.target = "_self";
+    let i = 0, el = e.target;
+    while( el && el.tagName != 'A' && i++ < 3 ) {
+        el = el.parentNode;
+    }
+    if( el && el.tagName == 'A' && el.target == "_blank" ) {
+        el.target = "_self";
     }
 }, true);
 ```
