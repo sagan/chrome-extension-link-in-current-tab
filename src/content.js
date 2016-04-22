@@ -7,4 +7,4 @@ window.addEventListener('click', (e) => {
     if( el && el.target == "_blank" ) {
         el.target = "_self";
     }
-}, true);
+});
