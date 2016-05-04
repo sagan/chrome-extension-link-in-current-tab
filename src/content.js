@@ -8,6 +8,6 @@ function handle(e) {
         el = el.parentNode;
     }
     if( el && el.target == "_blank" ) {
-        el.target = "_self";
+        el.target = "_top";
     }
 }
