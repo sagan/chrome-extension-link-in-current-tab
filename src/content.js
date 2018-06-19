@@ -5,7 +5,7 @@ window.addEventListener('submit', handle);
 window.addEventListener('submit', handle, true);
 
 function handle(e) {
-  let i = 0, el = e.target;
+  let i = 0, el = e.target, els = [];
   let frames = Array.from(document.querySelectorAll('iframe,frame')).map(f => f.name).filter(f => f);
   try {
     if( window.parent != window ) {
@@ -16,13 +16,17 @@ function handle(e) {
   while( el && !el.target && i++ < 5 ) {
     el = el.parentNode;
   }
-  if( el && el.target ) {
-    if( el.target.startsWith('_') ) {
-      if( el.target == "_blank" ) {
+
+  els.push(el, document.querySelector('head base'));
+  els.forEach(el => {
+    if( el && el.target ) {
+      if( el.target.startsWith('_') ) {
+        if( el.target == "_blank" ) {
+          el.target = "_top";
+        }
+      } else if( !frames.includes(el.target) ) {
         el.target = "_top";
       }
-    } else if( !frames.includes(el.target) ) {
-      el.target = "_top";
     }
-  }
+  });
 }
